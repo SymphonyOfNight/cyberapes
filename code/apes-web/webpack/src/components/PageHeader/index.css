@@ -1,0 +1,7 @@
+.pageHeader{
+  min-height: 120px;
+  padding: 16px 32px 0;
+  margin: -24px -24px 0px;
+  background: #fff;
+  /*box-shadow: 0px 2px 4px rgba(0, 21, 41, .08);*/
+}
