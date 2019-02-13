@@ -1,0 +1,11 @@
+# see more > https://docs.spring.io/spring-boot/docs/2.1.2.RELEASE/reference/htmlsingle/
+server:
+  port: 8200
+  servlet:
+    context-path: /gateway
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://111.230.142.50:3306/apes
+    username: apes
+    password: wj123456

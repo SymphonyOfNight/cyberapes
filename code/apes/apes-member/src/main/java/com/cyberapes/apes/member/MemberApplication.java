@@ -1,12 +1,14 @@
-package com.cyberapes.apes.core;
+package com.cyberapes.apes.member;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ApesCoreApplication {
+public class MemberApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ApesCoreApplication.class, args);
+        SpringApplication.run(MemberApplication.class, args);
     }
+
 }
+

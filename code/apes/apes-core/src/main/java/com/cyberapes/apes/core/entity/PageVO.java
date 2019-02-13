@@ -1,6 +1,6 @@
 package com.cyberapes.apes.core.entity;
 
-public class PagerVO {
+public class PageVO {
 
     public int currentPage;
 
