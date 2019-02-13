@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.cyberapes.apes</groupId>
+    <artifactId>apes</artifactId>
+    <name>apes</name>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.2.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <!--子模块-->
+    <modules>
+        <module>apes-core</module>
+        <module>apes-member</module>
+        <module>apes-report</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+
+        <!-- 依赖版本信息 -->
+        <mybatis-spring-boot-starter.version>1.3.2</mybatis-spring-boot-starter.version>
+
+        <!-- 插件版本信息 -->
+        <lombok.version>1.18.4</lombok.version>
+        <maven-plugin.version>3.8.0</maven-plugin.version>
+        <junit.version>4.12</junit.version>
+    </properties>
+
+    <!--统一依赖管理-->
+    <dependencyManagement>
+        <dependencies>
+            <!-- mybatis-spring-boot -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot-starter.version}</version>
+            </dependency>
+            <!-- mysql  -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <scope>runtime</scope>
+            </dependency>
+            <!-- lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>junit</groupId>-->
+                <!--<artifactId>junit</artifactId>-->
+                <!--<version>${junit.version}</version>-->
+            <!--</dependency>-->
+            <!--<dependency>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-starter-test</artifactId>-->
+                <!--<scope>test</scope>-->
+            <!--</dependency>-->
+
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- 顶层工程不需要打包 -->
+    <!--<build>-->
+    <!--</build>-->
+
+</project>
