@@ -10,14 +10,14 @@
     <artifactId>apes-member</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>apes-member</name>
-    <description>member</description>
-    <packaging>jar</packaging>
+    <description>会员</description>
+    <packaging>pom</packaging>
 
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
-
+    <modules>
+        <module>apes-member-user</module>
+    </modules>
     <dependencies>
+        <!--依赖core模块-->
         <dependency>
             <groupId>com.cyberapes.apes</groupId>
             <artifactId>apes-core</artifactId>
@@ -27,16 +27,33 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions><!-- 去掉logback -->
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
-
+        <!-- log4j2 -->
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
+        <!--&lt;!&ndash;redis&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-data-redis</artifactId>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash;spring session - redis&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.session</groupId>-->
+            <!--<artifactId>spring-session-data-redis</artifactId>-->
+        <!--</dependency>-->
     </dependencies>
 
+    <!-- 打包 -->
     <build>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

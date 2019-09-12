@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * Service核心实现接口
- * 提供简单的增删改查功能，业务模块service实现改接口
+ * 提供简单的增删改查功能，业务模块service实现该接口
  * @param <T>
  */
 public interface ICoreService<T> {

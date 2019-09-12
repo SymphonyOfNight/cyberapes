@@ -30,7 +30,7 @@ mvnw.cmd
 
 ### IntelliJ IDEA ###
 logs
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr

@@ -1,11 +1,14 @@
 package com.cyberapes.apes.core.mapper;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 /**
  * 通用Mapper，配合ICoreService使用
  * @param <T>
  */
+@Repository
 public interface ICoreMapper<T> {
 
     /**

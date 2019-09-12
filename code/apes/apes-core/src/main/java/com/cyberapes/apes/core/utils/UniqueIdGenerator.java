@@ -2,10 +2,11 @@ package com.cyberapes.apes.core.utils;
 
 /**
  * 分布式唯一ID生成器
+ * 基于Twitter snowflake算法
  *
  * @author
  */
-public class UniqueIdGenerator implements IIdGenerator {
+public class UniqueIdGenerator{
 
 	/**
 	 * 开始使用该算法的时间为: 2017-01-01 00:00:00
@@ -57,42 +58,10 @@ public class UniqueIdGenerator implements IIdGenerator {
 	private long sequence = 0L;
 
 	/**
-	 * 单例
-	 */
-	private static volatile UniqueIdGenerator idGen = null;
-
-	/**
-	 * 实例化
-	 *
-	 * @param appHostId the app host id
-	 *
-	 * @return the instance
-	 */
-	public static UniqueIdGenerator getInstance(long appHostId) {
-		if (idGen == null) {
-			synchronized (UniqueIdGenerator.class) {
-				if (idGen == null) {
-					idGen = new UniqueIdGenerator(appHostId);
-				}
-			}
-		}
-		return idGen;
-	}
-
-	private UniqueIdGenerator(long appHostId) {
-		if (appHostId > MAX_APP_HOST_ID) {
-			// zk分配的serviceId过大(基本小规模的公司不会出现这样的问题)
-			throw new IllegalArgumentException(String.format("app host Id wrong: %d ", appHostId));
-		}
-		this.appHostId = appHostId;
-	}
-
-	/**
 	 * 利用twitter的snowflake（做了些微修改）算法来实现
 	 *
 	 * @return the long
 	 */
-	@Override
 	public Long nextId() {
 		return this.genUniqueId();
 	}
