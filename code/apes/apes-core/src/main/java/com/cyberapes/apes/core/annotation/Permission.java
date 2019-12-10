@@ -8,18 +8,18 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE,ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface AuthAccess {
+public @interface Permission {
+
+    /**
+     * 功能模块
+     * @return
+     */
+    String module();
 
     /**
      * 权限编码
      * @return
      */
     String value();
-
-    /**
-     * 权限描述
-     * @return
-     */
-    String desc();
 
 }

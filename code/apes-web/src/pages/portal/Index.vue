@@ -1,6 +1,6 @@
 <template>
     <IndexLayout>
-        <span>sadasda</span>
+        <div>123123123123</div>
     </IndexLayout>
 </template>
 

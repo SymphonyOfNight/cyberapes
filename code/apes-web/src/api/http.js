@@ -6,7 +6,7 @@ import { Message, Loading} from 'element-ui';
 /**
  * 根据错误编码获取错误信息
  * @param code
- * @returns {any}
+ * @returns {string}
  */
 function getErrorMessage(code) {
     switch (code) {

@@ -75,7 +75,7 @@ export function formatDate(date, format) {
             date = new Date(date);
             break;
     }
-    if (!date instanceof Date) return;
+    if (!typeof date == Date) return;
     var dict = {
         "yyyy": date.getFullYear(),
         "M": date.getMonth() + 1,
