@@ -2,14 +2,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>apes-member</artifactId>
-        <groupId>com.cyberapes.apes</groupId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.cyberapes.apes</groupId>
+        <artifactId>apes</artifactId>
+        <version>1.0</version>
+    </parent>
     <artifactId>apes-member-user</artifactId>
-    <packaging>jar</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>apes-member-user</name>
+    <description>会员-用户</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>apes-member-user-api</module>
+        <module>apes-member-user-impl</module>
+        <module>apes-member-user-rest</module>
+    </modules>
 
     <dependencies>
         <dependency>

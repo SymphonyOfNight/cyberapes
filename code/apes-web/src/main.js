@@ -1,22 +1,14 @@
 import Vue from 'vue'
-import './plugins/axios'
 import App from './App.vue'
-import router from './router/index'
-import './plugins/element.js'
-import * as ApesUtils from './utils/index'
-import * as ApesConstants from './store/index'
-import './styles/global.less'
-
-Vue.config.productionTip = false
-
-
-Vue.prototype.ApesUtils = ApesUtils
-Vue.prototype.ApesConstants = ApesConstants
-Vue.prototype.$goRouter = function (path) {
-    this.$router.push(path)
-}
+import router from './router'
+import store from './store/'
+import  './plugins/index'
+import './core/global.less'
+import  './core/index'
+import './components/Svgs'
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')

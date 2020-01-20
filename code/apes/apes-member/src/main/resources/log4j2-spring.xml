@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<!--Configuration后面的status，这个用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，你会看到log4j2内部各种详细输出-->
+<!--monitorInterval：Log4j能够自动检测修改配置 文件和重新配置本身，设置间隔秒数-->
+<configuration status="WARN" monitorInterval="30">
+    <!-- 变量参数 -->
+    <Properties>
+        <property name="APP_NAME" value="member"/>
+        <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss:SSS} [%t] %-5level - %m%n" />
+        <Property name="LOG_HOME" value="logs"/>
+        <Property name="FILE_NAME" value="%d{yyyyMMdd}-%i"/>
+    </Properties>
+
+    <Appenders>
+        <!--输出控制台的配置-->
+        <Console name="ConsoleLog" target="SYSTEM_OUT">
+            <!--输出日志的格式-->
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <!--控制台输出debug及以上级别日志-->
+            <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
+        </Console>
+
+        <!-- 这个会打印出所有的info及以级别的信息，每次大小超过size，则这size大小的日志会自动存入按%{date:...}建立的文件夹下面，同时可指定是否压缩-->
+        <RollingFile name="RollingFileLogger" fileName="${LOG_HOME}/${APP_NAME}.log" filePattern="${LOG_HOME}/${APP_NAME}-$${date:yyyyMMdd}/${APP_NAME}-${FILE_NAME}.log">
+            <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <!--interval指定时间间隔，时间单位与RollingFile.filePattern的date日期一致-->
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="100MB"/>
+            </Policies>
+
+            <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件开始覆盖-->
+            <DefaultRolloverStrategy max="100">
+                <!--定期删除规则，basePath：必参，扫描要删除的文件的起始路径，maxDepth：最大目录深度-->
+                <Delete basePath="${LOG_HOME}" maxDepth="2">
+                    <!--根据文件名匹配删除，glob或regex-->
+                    <IfFileName glob="*/*.log" />
+                    <!--根据文件最后修改日期删除，此处删除超过7天的日志-->
+                    <IfLastModified age="7d" />
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+    </Appenders>
+
+    <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效-->
+    <Loggers>
+        <!--过滤掉spring和mybatis的一些无用的DEBUG信息-->
+        <Logger name="org.springframework" level="INFO" />
+        <Logger name="org.mybatis" level="INFO" />
+
+        <Root level="INFO">
+            <AppenderRef ref="ConsoleLog"/>
+            <AppenderRef ref="RollingFileLogger"/>
+        </Root>
+    </Loggers>
+</configuration>

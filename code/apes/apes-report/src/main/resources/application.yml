@@ -2,7 +2,7 @@
 server:
   port: 8200
   servlet:
-    context-path: /gateway
+    context-path: /gateway/report
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver

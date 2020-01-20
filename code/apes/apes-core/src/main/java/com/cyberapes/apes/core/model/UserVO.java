@@ -1,6 +1,5 @@
 package com.cyberapes.apes.core.model;
 
-
 import lombok.Data;
 
 import java.io.Serializable;

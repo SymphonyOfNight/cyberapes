@@ -1,0 +1,68 @@
+@import "~ant-design-vue/lib/style/index";
+@global-sider-zindex: 106;
+@global-header-zindex: 105;
+@global-header-height: 64px;
+@global-max-wight: 1200px;
+@global-space: 12px;
+
+
+@font-size-base: 16px;
+@card-radius: 10px;
+
+
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.colorWeak {
+  filter: invert(80%);
+}
+
+.ant-layout {
+  min-height: 100vh;
+}
+
+canvas {
+  display: block;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+@media (max-width: @screen-xs) {
+  .ant-table {
+    width: 100%;
+    overflow-x: auto;
+
+    &-thead>tr,
+    &-tbody>tr {
+
+      >th,
+      >td {
+        white-space: pre;
+
+        >span {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.link {
+  &:hover {
+    cursor: pointer;
+    color: @primary-color;
+  }
+}
